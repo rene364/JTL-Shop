@@ -15,16 +15,16 @@ function loadGoogleForm() {
         iframe.style.border = "none";
         
         // 3. Wenn geladen, ganz nach oben scrollen
-        /*iframe.onload = function() {
+        iframe.onload = function() {
             window.scrollTo({
                 top: 0, 
                 behavior: 'smooth' 
             });
             
             // Fokus auf den Body setzen, damit Google nicht wieder nach unten springt
-            document.body.setAttribute('tabindex', '-1');
-            document.body.focus({preventScroll: true});
-        };*/
+            //document.body.setAttribute('tabindex', '-1');
+            //document.body.focus({preventScroll: true});
+        };
 
         target.appendChild(iframe);
     }
