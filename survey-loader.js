@@ -1,25 +1,26 @@
 function loadGoogleForm() {
     var wrapper = document.getElementById('umfrage');
-    var box = document.getElementById('survey-box'); // Deine Button-Box
+    var box = document.getElementById('survey-box');
     
-    if (wrapper) {
-        // 1. Box mit Button ausblenden
-        if(box) box.style.display = 'none';
+    if (wrapper && box) {
+        // 1. Button-Box ausblenden
+        box.style.display = 'none';
 
-        // 2. Umfrage einblenden
+        // 2. Umfrage-Container einblenden
         wrapper.style.display = 'block';
 
-        // 3. FOKUS-ABKOPPLUNG: 
-        // Wir setzen den Fokus auf den Wrapper selbst und verbieten das Scrollen.
-        // Das "klaut" Google den automatischen Fokus auf das erste Eingabefeld.
-        wrapper.setAttribute('tabindex', '-1'); 
+        // 3. Fokus-Abkopplung
+        // Wir setzen den Fokus auf den Wrapper, damit Google nicht 
+        // automatisch zum ersten Eingabefeld springt.
+        wrapper.setAttribute('tabindex', '-1');
         wrapper.focus({ preventScroll: true });
 
-        // 4. Sicherstellen, dass wir oben bleiben (für JTL Nova Header)
+        // 4. Sanft nach oben scrollen
+        // top: 0 springt ganz hoch. Falls der Nova-Header etwas verdeckt,
+        // kannst du top: wrapper.offsetTop - 100 nutzen.
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     }
 }
-
