@@ -17,7 +17,7 @@ function loadGoogleForm() {
         // 3. Wenn geladen, ganz nach oben scrollen
         iframe.onload = function() {
             window.scrollTo({
-                top: 0, 
+                top: 100, 
                 behavior: 'smooth' 
             });
             
