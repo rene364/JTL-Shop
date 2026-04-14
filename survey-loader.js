@@ -12,7 +12,7 @@ function loadGoogleForm() {
 
         iframe.onload = function() {
     setTimeout(function() {
-        window.scrollTo(200, 0); // Zwingt den Browser nach ganz oben
+        window.scrollTo(200, 200); // Zwingt den Browser nach ganz oben
         document.activeElement.blur(); // Entzieht dem gerade aktiven Element (iFrame) den Fokus
     }, 50); 
 };
