@@ -5,25 +5,25 @@ function loadGoogleForm() {
     
     if (target && box) {
         // 1. Box sofort ausblenden
-        //box.style.display = 'none';
+        box.style.display = 'none';
 
         // 2. Iframe erstellen
         var iframe = document.createElement('iframe');
         iframe.src = googleUrl;
-        //iframe.width = "100%";
-        //iframe.height = "1000";
+        iframe.width = "100%";
+        iframe.height = "100%";
         iframe.style.border = "none";
         
         // 3. Wenn geladen, ganz nach oben scrollen
         iframe.onload = function() {
-            window.scrollTo({
+            /*window.scrollTo({
                 top: 100, 
                 behavior: 'smooth' 
-            });
+            });*/
             
             // Fokus auf den Body setzen, damit Google nicht wieder nach unten springt
-            //document.body.setAttribute('tabindex', '-1');
-            //document.body.focus({preventScroll: true});
+            document.body.setAttribute('tabindex', '-1');
+            document.body.focus({preventScroll: true});
         };
 
         target.appendChild(iframe);
