@@ -1,26 +1,12 @@
 function loadGoogleForm() {
-    var wrapper = document.getElementById('umfrage');
+    var googleUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdr7mTb-_EiZpe48nO7ufwp35CRXXAXarkOQ2V5RGJm_Gs1tQ/viewform?embedded=true";
+    var target = document.getElementById('survey-target');
     var box = document.getElementById('survey-box');
     
-    if (wrapper && box) {
-        // 1. Button-Box ausblenden
+    if (target && box) {
+        target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Google Form Umfrage">Lädt...</iframe>';
         box.style.display = 'none';
-
-        // 2. Umfrage-Container einblenden
-        wrapper.style.display = 'block';
-
-        // 3. Fokus-Abkopplung
-        // Wir setzen den Fokus auf den Wrapper, damit Google nicht 
-        // automatisch zum ersten Eingabefeld springt.
-        wrapper.setAttribute('tabindex', '-1');
-        wrapper.focus({ preventScroll: true });
-
-        // 4. Sanft nach oben scrollen
-        // top: 0 springt ganz hoch. Falls der Nova-Header etwas verdeckt,
-        // kannst du top: wrapper.offsetTop - 100 nutzen.
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        // Optional: Scrollt zum Formular, falls die Seite lang ist
+        target.scrollIntoView({ behavior: 'smooth' });
     }
 }
