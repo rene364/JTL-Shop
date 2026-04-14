@@ -10,8 +10,8 @@ function loadGoogleForm() {
         // 2. Iframe erstellen
         var iframe = document.createElement('iframe');
         iframe.src = googleUrl;
-        iframe.width = "100%";
-        iframe.height = "1000";
+        //iframe.width = "100%";
+        //iframe.height = "1000";
         iframe.style.border = "none";
         
         // 3. Wenn geladen, ganz nach oben scrollen
