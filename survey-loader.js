@@ -35,7 +35,7 @@ function loadGoogleForm() {
             
             // Korrektur: Springt zum Anfang des Formulars, nicht in die Mitte
             window.scrollTo({
-                top: target.offsetTop - 50,
+                top: target.offsetTop - 200,
                 behavior: 'smooth'
             });
             
