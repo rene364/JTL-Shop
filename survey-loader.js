@@ -10,3 +10,17 @@ function loadGoogleForm() {
         target.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+iframe.onload = function() {
+    // 1. Ladebalken verstecken und Iframe zeigen
+    document.getElementById('survey-loader').style.display = "none";
+    iframe.style.display = "block";
+    
+    // 2. Den Fokus vom Iframe wegnehmen und nach oben springen
+    window.scrollTo(0, target.offsetTop - 50); // -50 für etwas Puffer nach oben
+    
+    // 3. Den Fokus auf das Ziel-Element setzen, damit Google nicht scrollt
+    target.setAttribute('tabindex', '-1');
+    target.focus();
+};
+
