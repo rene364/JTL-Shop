@@ -5,7 +5,7 @@ function loadGoogleForm() {
     
     if (target && box) {
         // 1. Box sofort ausblenden
-        box.style.display = 'none';
+        //box.style.display = 'none';
 
         // 2. Iframe erstellen
         var iframe = document.createElement('iframe');
