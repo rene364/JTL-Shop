@@ -11,7 +11,7 @@ function loadGoogleForm() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // 3. Fokus abkoppeln, damit Google nicht zurückspringt
-        wrapper.setAttribute('tabindex', '-1');
-        wrapper.focus({ preventScroll: true });
+        //wrapper.setAttribute('tabindex', '-1');
+        //wrapper.focus({ preventScroll: true });
     }
 }
