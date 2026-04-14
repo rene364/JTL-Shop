@@ -1,32 +1,41 @@
 function loadGoogleForm() {
-    var googleUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdr7mTb-_EiZpe48nO7ufwp35CRXXAXarkOQ2V5RGJm_Gs1tQ/viewform?usp=header";
+    var googleUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdr7mTb-_EiZpe48nO7ufwp35CRXXAXarkOQ2V5RGJm_Gs1tQ/viewform?embedded=true";
     var target = document.getElementById('survey-target');
     var box = document.getElementById('survey-box');
     
     if (target && box) {
-        // Iframe erstellen
+        // 1. Box ausblenden
+        box.style.display = 'none';
+
+        // 2. Iframe dynamisch erstellen
         var iframe = document.createElement('iframe');
         iframe.src = googleUrl;
         iframe.width = "100%";
-        iframe.height = "800";
-        iframe.frameBorder = "0";
-        iframe.title = "Umfrage";
-
-        // Sobald das Iframe lädt, korrigieren wir den Scroll
+        iframe.height = "1000";
+        iframe.style.border = "none";
+        iframe.style.opacity = "0"; // Erst unsichtbar, um Flackern zu vermeiden
+        iframe.style.transition = "opacity 0.5s";
+        
+        // 3. PRÜFUNG: Wann ist das Iframe fertig?
         iframe.onload = function() {
+            // Iframe sichtbar machen
+            iframe.style.opacity = "1";
+            
+            // Verzögerung, um den automatischen Google-Fokus abzufangen
             setTimeout(function() {
-                // Berechne Position minus Platz für den Nova-Header (ca. 150px)
-                var offset = target.getBoundingClientRect().top + window.pageYOffset - 150;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-                
-                // Fokus vom Iframe wegnehmen, damit Google nicht wieder springt
+                // Position des Targets berechnen
+                // Wir ziehen 150px ab, damit der Nova-Header nicht drüber liegt
+                const yOffset = -150; 
+                const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                window.scrollTo({top: y, behavior: 'smooth'});
+
+                // Fokus auf das Target setzen, um Google den Fokus zu "entziehen"
                 target.setAttribute('tabindex', '-1');
-                target.focus({ preventScroll: true });
-            }, 1000); // Kurze Verzögerung, damit Google fertig fokussiert hat
+                target.focus({preventScroll: true});
+            }, 200); // 200ms warten sicherheitshalber
         };
 
-        target.innerHTML = ''; // Platzhalter leeren
         target.appendChild(iframe);
-        box.style.display = 'none';
     }
 }
