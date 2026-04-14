@@ -4,10 +4,29 @@ function loadGoogleForm() {
     var box = document.getElementById('survey-box');
     
     if (target && box) {
+        // Iframe erstellen
+        var iframe = document.createElement('iframe');
+        iframe.src = googleUrl;
+        iframe.width = "100%";
+        iframe.height = "900";
+        iframe.frameBorder = "0";
+        iframe.title = "Umfrage";
+
+        // Sobald das Iframe lädt, korrigieren wir den Scroll
+        iframe.onload = function() {
+            setTimeout(function() {
+                // Berechne Position minus Platz für den Nova-Header (ca. 150px)
+                var offset = target.getBoundingClientRect().top + window.pageYOffset - 150;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+                
+                // Fokus vom Iframe wegnehmen, damit Google nicht wieder springt
+                target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
+            }, 100); // Kurze Verzögerung, damit Google fertig fokussiert hat
+        };
+
+        target.innerHTML = ''; // Platzhalter leeren
+        target.appendChild(iframe);
         box.style.display = 'none';
-        target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Google Form Umfrage">Lädt...</iframe>';
-        
-        // Optional: Scrollt zum Formular, falls die Seite lang ist
-        // target.scrollIntoView({ behavior: 'smooth' });
     }
 }
