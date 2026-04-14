@@ -8,7 +8,7 @@ function loadGoogleForm() {
         var iframe = document.createElement('iframe');
         iframe.src = googleUrl;
         iframe.width = "100%";
-        iframe.height = "900";
+        iframe.height = "200";
         iframe.frameBorder = "0";
         iframe.title = "Umfrage";
 
