@@ -8,7 +8,7 @@ function loadGoogleForm() {
         wrapper.style.display = 'block';
 
         // 2. Den JTL "Go-to-top" Button suchen und triggern
-        var topButton = document.querySelector('#footer > div.smoothscroll-top.go-to-top.scroll-to-top');
+        var topButton = document.querySelector('#footer > div.smoothscroll-top.go-to-top.scroll-to-top show');
         
         if (topButton) {
             topButton.click(); // Simuliert den Klick des Nutzers
