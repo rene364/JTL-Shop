@@ -1,12 +1,24 @@
 function loadGoogleForm() {
-    var googleUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdr7mTb-_EiZpe48nO7ufwp35CRXXAXarkOQ2V5RGJm_Gs1tQ/viewform?embedded=true";
-    var target = document.getElementById('survey-target');
+    var wrapper = document.getElementById('umfrage');
     var box = document.getElementById('survey-box');
     
-    if (target && box) {
-        target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Google Form Umfrage">Lädt...</iframe>';
+    if (wrapper && box) {
+        // 1. Umfrage anzeigen
         box.style.display = 'none';
-        // Optional: Scrollt zum Formular, falls die Seite lang ist
-        target.scrollIntoView({ behavior: 'smooth' });
+        wrapper.style.display = 'block';
+
+        // 2. Den JTL "Go-to-top" Button suchen und triggern
+        var topButton = document.querySelector('#footer > div.smoothscroll-top.go-to-top.scroll-to-top');
+        
+        if (topButton) {
+            topButton.click(); // Simuliert den Klick des Nutzers
+        } else {
+            // Fallback, falls der Button nicht gefunden wird
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 3. Fokus abkoppeln, damit Google nicht zurückspringt
+        wrapper.setAttribute('tabindex', '-1');
+        wrapper.focus({ preventScroll: true });
     }
 }
