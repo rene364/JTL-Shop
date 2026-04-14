@@ -8,7 +8,7 @@ function loadGoogleForm() {
         var iframe = document.createElement('iframe');
         iframe.src = googleUrl;
         iframe.width = "100%";
-        iframe.height = "200";
+        iframe.height = "800";
         iframe.frameBorder = "0";
         iframe.title = "Umfrage";
 
@@ -22,7 +22,7 @@ function loadGoogleForm() {
                 // Fokus vom Iframe wegnehmen, damit Google nicht wieder springt
                 target.setAttribute('tabindex', '-1');
                 target.focus({ preventScroll: true });
-            }, 100); // Kurze Verzögerung, damit Google fertig fokussiert hat
+            }, 1000); // Kurze Verzögerung, damit Google fertig fokussiert hat
         };
 
         target.innerHTML = ''; // Platzhalter leeren
