@@ -1,12 +1,31 @@
 function loadGoogleForm() {
-    var googleUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdr7mTb-_EiZpe48nO7ufwp35CRXXAXarkOQ2V5RGJm_Gs1tQ/viewform?embedded=true";
+    var googleUrl = "https://google.com";
     var target = document.getElementById('survey-target');
     var box = document.getElementById('survey-box');
     
     if (target && box) {
-        target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Google Form Umfrage">Lädt...</iframe>';
+        // 1. Box sofort ausblenden
         box.style.display = 'none';
-        // Optional: Scrollt zum Formular, falls die Seite lang ist
-        target.scrollIntoView({ behavior: 'smooth' });
+
+        // 2. Iframe erstellen
+        var iframe = document.createElement('iframe');
+        iframe.src = googleUrl;
+        iframe.width = "100%";
+        iframe.height = "1000";
+        iframe.style.border = "none";
+        
+        // 3. Wenn geladen, ganz nach oben scrollen
+        iframe.onload = function() {
+            window.scrollTo({
+                top: 0, 
+                behavior: 'smooth' 
+            });
+            
+            // Fokus auf den Body setzen, damit Google nicht wieder nach unten springt
+            document.body.setAttribute('tabindex', '-1');
+            document.body.focus({preventScroll: true});
+        };
+
+        target.appendChild(iframe);
     }
 }
