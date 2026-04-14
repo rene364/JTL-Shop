@@ -33,7 +33,7 @@ function loadGoogleForm() {
                 // Fokus auf das Target setzen, um Google den Fokus zu "entziehen"
                 target.setAttribute('tabindex', '-1');
                 target.focus({preventScroll: true});
-            }, 200); // 200ms warten sicherheitshalber
+            }, 3000); // 200ms warten sicherheitshalber
         };
 
         target.appendChild(iframe);
