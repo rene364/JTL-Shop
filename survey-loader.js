@@ -5,7 +5,7 @@ function loadGoogleForm() {
     
     if (target && box) {
         target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Google Form Umfrage">Lädt...</iframe>';
-        box.style.display = 'none';
+        // box.style.display = 'none';
         // Optional: Scrollt zum Formular, falls die Seite lang ist
         target.scrollIntoView({ behavior: 'smooth' });
     }
