@@ -4,4 +4,5 @@ function loadGoogleForm() {
     var target = document.getElementById('survey-target'); 
     var box = document.getElementById('survey-box'); 
     target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Lädt...</iframe>'; 
-    box.style.display = 'none'; // Blendet den Hinweistext nach Klick aus}
+    box.style.display = 'none'; // Blendet den Hinweistext nach Klick aus
+}
