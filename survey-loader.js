@@ -5,4 +5,11 @@ function loadGoogleForm() {
     var box = document.getElementById('survey-box'); 
     target.innerHTML = '<iframe src="' + googleUrl + '" width="640" height="654" frameborder="0" marginheight="100" marginwidth="0">Lädt...</iframe>'; 
     box.style.display = 'none'; // Blendet den Hinweistext nach Klick aus
+    
+    // Fallback, falls der Button nicht gefunden wird
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // 3. Fokus abkoppeln, damit Google nicht zurückspringt
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
 }
