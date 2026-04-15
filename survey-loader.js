@@ -5,7 +5,7 @@ function loadGoogleForm() {
     
     // 1. Inhalt setzen und Box ausblenden
     // Tipp: width="100%" macht es mobil-freundlicher
-    target.innerHTML = '<iframe src="' + googleUrl + '" width="100%" height="654" frameborder="0" marginheight="0" marginwidth="0">Lädt...</iframe>'; 
+    target.innerHTML = '<iframe src="' + googleUrl + '" width="640" height="654" frameborder="0" marginheight="0" marginwidth="0">Lädt...</iframe>'; 
     box.style.display = 'none';
 
     // 2. Fokus-Abkopplung mit minimaler Verzögerung
