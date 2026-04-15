@@ -1,5 +1,5 @@
 function loadGoogleForm() {
-    var wrapper = document.getElementById('umfrage');
+    var wrapper = document.getElementById('survey-target');
     var box = document.getElementById('survey-box');
     
     if (wrapper && box) {
